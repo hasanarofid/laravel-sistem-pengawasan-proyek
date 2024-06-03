@@ -1,4 +1,4 @@
-APP_NAME=SIPEGAWAI
+APP_NAME=Konsultan Pengawas
 APP_ENV=local
 APP_KEY=base64:7/kunXuxsqXEA4JqitGSSmHTpIwxGJoWLPvur762haI=
 APP_DEBUG=true
@@ -10,7 +10,7 @@ LOG_LEVEL=debug
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=laravel_sipegawai
+DB_DATABASE=laravel_Konsultan Pengawas
 DB_USERNAME=root
 DB_PASSWORD=
 
@@ -32,7 +32,7 @@ MAIL_PORT=587
 MAIL_USERNAME=emailkantor@gmail.com
 MAIL_PASSWORD=passwordemailkantor
 MAIL_ENCRYPTION=tls
-MAIL_FROM_ADDRESS=noreply@sipegawai.com
+MAIL_FROM_ADDRESS=noreply@Konsultan Pengawas.com
 MAIL_FROM_NAME="${APP_NAME}"
 
 AWS_ACCESS_KEY_ID=

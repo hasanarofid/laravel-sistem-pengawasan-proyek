@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SIPEGAWAI</title>
+    <title>Konsultan Pengawas</title>
     <link rel="shortcut icon" href="{{ URL::to('/img') }}/favicon.ico" type="image/x-icon">
     <!-- Bootstrap , fonts & icons  -->
     <link rel="stylesheet" href="{{ URL::to('/landing') }}/css/bootstrap.css">
@@ -36,7 +36,7 @@
                     <div class="brand-logo d-inline-block">
                         <a href="#">
                             <!-- light version logo (logo must be black)-->
-                            <img src="{{ URL::to('/admin') }}/assets/images/logo_sipegawai.png" alt="">
+                            <img src="{{ URL::to('/admin') }}/assets/images/logo_Konsultan Pengawas.png" alt="">
                             <!-- Dark version logo (logo must be White)-->
                         </a>
                     </div>
@@ -107,7 +107,7 @@
                                 <div class="copyright">
                                     <p
                                         class="font-size-1 font-family-5 text-periwinkle-gray line-height-1p5 mb-0 font-family-inter">
-                                        &copy; SIPEGAWAI 2020 All right reserved. </p>
+                                        &copy; Konsultan Pengawas 2020 All right reserved. </p>
                                 </div>
                                 <!-- copyright end-->
                                 <!-- footer-menu start-->

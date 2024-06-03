@@ -2,7 +2,7 @@
  
  **Hal Yang Dibutuhkan Yang harus ada sebelum masuk ke step-step menjalankan aplikasi :**
 1. Database = phpmyadmin 
-    * nama database = laravel_sipegawai
+    * nama database = laravel_Konsultan Pengawas
     * password = null/kosong
 2. Web Server / pake Xampp juga bisa (Harus dinyalakan terlebih dahulu)
 3. Composer (Ver. 2.0 Recommended)
@@ -12,8 +12,8 @@
 
 **Step Step Menjalankan Aplikasi**
 1. Buka Git anda.
-2. Lalu **jalankan** git clone https://github.com/hakimfauzi23/SIPEGAWAI.git di terminal/git bash.
-3. Ganti direktori ke direktori *SIPEGAWAI*
+2. Lalu **jalankan** git clone https://github.com/hakimfauzi23/Konsultan Pengawas.git di terminal/git bash.
+3. Ganti direktori ke direktori *Konsultan Pengawas*
 4. Setelah itu **jalankan** composer install.
 5. Lalu untuk membuat .env dengan cara **jalankan** cp .env.example .env
 6. Selanjutnya salin teks yang berada di dalam **file env.txt** ke dalam file **.env**

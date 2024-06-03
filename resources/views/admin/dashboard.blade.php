@@ -272,7 +272,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <label for=""> Email Perusahaan </label>
-                                    <input type="text" name="email_private" placeholder="Contoh : sipegawai@gmail.com"
+                                    <input type="text" name="email_private" placeholder="Contoh : Konsultan Pengawas@gmail.com"
                                         class="form-control" required="required">
                                 </div>
                                 <div class="col-sm-6">

@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             PotonganSeeder::class,
             TunjanganSeeder::class,
             IconSeeder::class,
+            PerusahaanTableSeeder::class,
         ]);
     }
 }

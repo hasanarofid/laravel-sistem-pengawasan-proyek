@@ -374,8 +374,8 @@
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td>
-                                            <h3> Reset Password Akun SIPEGAWAI </h3>
-                                            <h4>Link Untuk Reset Password Akun SIPEGAWAI Kamu Ada Di Bawah Sini.</h4>
+                                            <h3> Reset Password Akun Konsultan Pengawas </h3>
+                                            <h4>Link Untuk Reset Password Akun Konsultan Pengawas Kamu Ada Di Bawah Sini.</h4>
                                             <table role="presentation" border="0" cellpadding="0" cellspacing="0"
                                                 class="btn btn-primary">
                                                 <tbody>
@@ -415,7 +415,7 @@
                         <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                             <tr>
                                 <td class="content-block">
-                                    <span class="apple-link">SIPEGAWAI</span>
+                                    <span class="apple-link">Konsultan Pengawas</span>
                                     <br> Email Notification <a href="#"></a>.
                                 </td>
                             </tr>

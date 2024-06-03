@@ -33,7 +33,7 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         if (!empty(env('NGROK_URL')) && $request->server->has('HTTP_X_ORIGINAL_HOST')) {
-            $this->app['C:\UJITA-12JULI2021\SIPEGAWAI']->forceRootUrl(env('NGROK_URL'));
+            $this->app['C:\UJITA-12JULI2021\Konsultan Pengawas']->forceRootUrl(env('NGROK_URL'));
         }
 
         Paginator::useBootstrap();
