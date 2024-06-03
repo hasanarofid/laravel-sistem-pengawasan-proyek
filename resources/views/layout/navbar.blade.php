@@ -1,7 +1,9 @@
 <?php $user = Auth::user(); ?>
 <div class="navbar-header">
-    <a class="navbar-brand" href="index.html"><img src="{{ URL::to('/admin') }}/assets/images/logo_Konsultan Pengawas.png"
-            alt=""></a>
+    <a class="navbar-brand" href="{{ url('/superAdmin') }}"><img src="{{ URL::to('/img') }}/favicon.ico"
+            alt="">
+    <p style="margin-left: 30px;margin-top: -15px !important;">Konsultan Pengawas</p>
+        </a>
 
     <ul class="nav navbar-nav visible-xs-block">
         <li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
