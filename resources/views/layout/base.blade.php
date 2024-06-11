@@ -62,6 +62,16 @@
     <script type="text/javascript" src="{{ URL::to('/admin') }}/assets/js/pages/dashboard.js"></script>
 
     <!-- /theme JS files -->
+<!-- Buttons CSS -->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css"/>
+
+    <!-- Buttons JS -->
+<script type="text/javascript" src="{{ URL::to('/admin') }}/assets/js/plugins/tables/datatables/extensions/buttons.min.js"></script>
+<script type="text/javascript" src="{{ URL::to('/admin') }}/assets/js/pages/datatables_extension_buttons_flash.js"></script>
+<script type="text/javascript" src="{{ URL::to('/admin') }}/assets/js/plugins/tables/datatables/extensions/jszip/jszip.min.js"></script>
+<script type="text/javascript" src="{{ URL::to('/admin') }}/assets/js/pages/datatables_extension_buttons_html5.js"></script>
+<script type="text/javascript" src="{{ URL::to('/admin') }}/assets/js/pages/datatables_extension_buttons_print.js"></script>
+
 
 
 
@@ -119,8 +129,8 @@
                     @yield('content')
 
                     <!-- Footer -->
-                    <div class="footer text-muted">&copy; 2015. <a href="#">Limitless Web App Kit</a> by <a
-                            href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+                    <div class="footer text-muted">&copy; {{ date('Y') }}. <a href="#">Konsultan Pengawas</a> by <a
+                            href="#" target="_blank">Bimantoro</a>
                     </div>
                     <!-- /footer -->
 

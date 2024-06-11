@@ -11,7 +11,6 @@
 
 $(function() {
 
-
     // Table setup
     // ------------------------------
 
@@ -23,7 +22,10 @@ $(function() {
             width: '100px',
             targets: [ 5 ]
         }],
-        dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
+        dom: '<"datatable-header"flB><"datatable-scroll"t><"datatable-footer"ip>',
+        buttons: [
+            'excel', 'pdf', 'print'
+        ],
         language: {
             search: '<span>Filter:</span> _INPUT_',
             searchPlaceholder: 'Type to filter...',
@@ -74,5 +76,7 @@ $(function() {
         minimumResultsForSearch: Infinity,
         width: 'auto'
     });
+    
+
     
 });
