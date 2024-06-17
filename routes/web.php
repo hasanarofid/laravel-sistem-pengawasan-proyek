@@ -26,6 +26,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\GajiController;
 use App\Http\Controllers\Hrd\HrdDashboardController;
+use App\Http\Controllers\LaporanHarianController;
 use App\Http\Controllers\ManajemenPerusahaanController;
 use App\Http\Controllers\ManajemenRoleMenuController;
 use App\Http\Controllers\PenilaianKinerjaController;
@@ -233,6 +234,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/penilaian/showAll', [PenilaianKinerjaController::class, 'showAll'])->name('penilaian.showAll');
     Route::resource('penilaian', PenilaianKinerjaController::class);
     Route::get('/penilaian/createData/{data}', [PenilaianKinerjaController::class, 'createData'])->name('penilaian.createData');
+
+    //laporan harian
+    Route::resource('laporanHarian', LaporanHarianController::class);
+
 });
 
 Auth::routes();

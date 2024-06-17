@@ -32,6 +32,7 @@ class PegawaiSeeder extends Seeder
             $jbtn = $faker->numberBetween(1, 9);
             $relg = $faker->numberBetween(0, 5);
             $role = [1, 2, 3];
+            $nama = ['Bangbang Bimantoro', 'Abdul Rosyid', 'Saiful Anam'];
             $email = ['admin@gmail.com', 'hrd@gmail.com', 'staff@gmail.com'];
             $dvs = $faker->numberBetween(2, 4);
 
@@ -39,9 +40,9 @@ class PegawaiSeeder extends Seeder
                 'id' => $id,
                 'id_role' => $role[$i],
                 'nik' => $faker->nik(),
-                'nama' => $faker->name,
-                'jk' => $jk[$jkp],
-                'agama' => $agama[$relg],
+                'nama' => $nama[0],
+                'jk' => $jk[0],
+                'agama' => $agama[0],
                 'tempat_lahir' => $faker->city,
                 'tgl_lahir' => $faker->date,
                 'alamat_ktp' => $faker->streetAddress,
