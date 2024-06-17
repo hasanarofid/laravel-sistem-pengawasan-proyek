@@ -141,10 +141,10 @@ class SuratPeringatanController extends Controller
         $email["nama"] = $pegawai->nama;
 
         try {
-            Mail::send('emails.sendSuratPeringatan', $email, function ($message) use ($email, $pdf, $pegawai) {
-                $message->to($email["email"], $email["email"])
-                    ->subject($email["title"])->attachData($pdf->output(), "Surat-Peringatan-" . $pegawai->nama . ".pdf");
-            });
+            // Mail::send('emails.sendSuratPeringatan', $email, function ($message) use ($email, $pdf, $pegawai) {
+            //     $message->to($email["email"], $email["email"])
+            //         ->subject($email["title"])->attachData($pdf->output(), "Surat-Peringatan-" . $pegawai->nama . ".pdf");
+            // });
 
             Alert::success('success', ' Berhasil Membuat Surat Peringatan & Dikirim ke Email Pegawai !');
             return redirect(route('suratPeringatan.index'));
