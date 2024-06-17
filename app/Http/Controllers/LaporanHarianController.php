@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LaporanHarian;
 use Illuminate\Http\Request;
 
 class LaporanHarianController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:dashboard-admin', ['all']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +18,8 @@ class LaporanHarianController extends Controller
      */
     public function index()
     {
-        //
+        $laporan = LaporanHarian::all();
+        return view('admin.laporanharian.index', compact('laporan'));
     }
 
     /**
