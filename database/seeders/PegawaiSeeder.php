@@ -34,15 +34,16 @@ class PegawaiSeeder extends Seeder
             $role = [1, 2, 3];
             $nama = ['Bangbang Bimantoro', 'Abdul Rosyid', 'Saiful Anam'];
             $email = ['admin@gmail.com', 'hrd@gmail.com', 'staff@gmail.com'];
+            $nama_pegawai = ['Bimantoro', 'Anisa', 'Barra Baihaqi'];
             $dvs = $faker->numberBetween(2, 4);
 
             $pegawai = Pegawai::create([
                 'id' => $id,
                 'id_role' => $role[$i],
                 'nik' => $faker->nik(),
-                'nama' => $nama[0],
-                'jk' => $jk[0],
-                'agama' => $agama[0],
+                'nama' => $nama_pegawai[$i],
+                'jk' => $jk[$jkp],
+                'agama' => $agama[$relg],
                 'tempat_lahir' => $faker->city,
                 'tgl_lahir' => $faker->date,
                 'alamat_ktp' => $faker->streetAddress,
