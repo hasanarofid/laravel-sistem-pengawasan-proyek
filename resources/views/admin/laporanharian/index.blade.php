@@ -71,67 +71,31 @@
 
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>{{ $p->nama }}</td>
+                                <td>{{ $p->tanggal }}</td>
                                 <td>
-                                    @if (stripos($p->nama, 'anak') || stripos($p->nama, 'keluarga'))
-                                        {{ $p->jumlah . '% x gaji pokok' }}
-                                    @else
-                                        @currency($p->jumlah)
-                                    @endif
+                                    {{ $p->barang }}
                                 </td>
-                                <td class="text-center ">
-
-                                    <div style="float:left;">
-                                        <form method="POST" action="{{ route('tunjangan.isActive', $encyrpt) }}"
-                                            id="formActive">
-                                            {{ csrf_field() }}
-                                            {{ method_field('PUT') }}
-
-
-                                            @if ($p->is_active == 1)
-                                                <label class="checkbox-inline">
-                                                    <input type="checkbox" class="styled" value="0" name="is_active"
-                                                        onchange="this.form.submit()" checked>
-                                                    Active
-                                                </label>
-                                            @else
-                                                <label class="checkbox-inline">
-                                                    <input type="checkbox" class="styled" value="1" name="is_active"
-                                                        onchange="this.form.submit()">
-                                                    Active
-                                                </label>
-                                            @endif
-
-                                        </form>
-                                    </div>
-
-                                    <div style="width:50%; margin:auto;">
-                                        <div style="display:inline-block; width:45%;text-align:center;">
-                                            <form method="POST" action="{{ route('tunjangan.isShown', $encyrpt) }}"
-                                                id="formShown">
-                                                {{ csrf_field() }}
-                                                {{ method_field('PUT') }}
-
-
-                                                @if ($p->is_shown == 1)
-                                                    <label class="checkbox-inline">
-                                                        <input type="checkbox" class="styled" value="0" name="is_shown"
-                                                            onchange="this.form.submit()" checked>
-                                                        Shown
-                                                    </label>
-                                                @else
-                                                    <label class="checkbox-inline">
-                                                        <input type="checkbox" class="styled" value="1" name="is_shown"
-                                                            onchange="this.form.submit()">
-                                                        Shown
-                                                    </label>
-                                                @endif
-
-                                            </form>
-                                        </div>
-                                    </div>
+                                <td>
+                                    {{ $p->kegiatan }}
                                 </td>
-                                <td hidden><span class="label label-success">Active</span></td>
+                                <td>
+                                    <div class="text-center">
+                                        @php $path =Storage::url('images/'.$p->dokumentasi); @endphp
+                                        <img src="{{ url($path) }}"
+                                            onerror="this.onerror=null; this.src='{{ URL::to('/admin/assets/images/brands/user.jpeg') }}'"
+                                            alt="Dokumentasi" width="160">
+                                    </div>
+                                    {{ $p->dokumentasi }}
+                                </td>
+                                <td>
+                                {{ $p->jumlah_pekerjaan }}
+                                </td>
+                                <td>
+                                {{ $p->alat_digunakan }}
+                                </td>
+                                <td>
+                                {{ $p->keterangan }}
+                                </td>
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
@@ -141,10 +105,10 @@
 
                                             <ul class="dropdown-menu dropdown-menu-right">
                                                 <?php $encyrpt = Crypt::encryptString($p->id); ?>
-                                                <li><a href="{{ route('tunjangan.destroy', $encyrpt) }}"><i
+                                                <li><a href="{{ route('laporanHarian.destroy', $encyrpt) }}"><i
                                                             class=" icon-trash"></i> Hapus</a>
                                                 </li>
-                                                <li><a href="{{ route('tunjangan.edit', $encyrpt) }}"><i
+                                                <li><a href="{{ route('laporanHarian.edit', $encyrpt) }}"><i
                                                             class=" icon-pencil5"></i> Edit</a>
                                                 </li>
                                             </ul>

@@ -237,6 +237,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     //laporan harian
     Route::resource('laporanHarian', LaporanHarianController::class);
+    Route::get('/laporanHarian/destroy/{data}', [LaporanHarianController::class, 'destroy'])->name('laporanHarian.destroy');
 
 });
 
