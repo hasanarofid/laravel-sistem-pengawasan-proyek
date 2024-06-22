@@ -110,9 +110,17 @@ class LaporanHarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($data)
     {
         //
+        $id = Crypt::decryptString($data);
+        $laporan = LaporanHarian::find($id);
+        
+
+        return view('admin.laporanharian.edit', [
+            'id' => $data,
+            'laporan' => $laporan,
+        ]);
     }
 
     /**
@@ -122,9 +130,52 @@ class LaporanHarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $data)
     {
         //
+        $id = Crypt::decryptString($data);
+        if ($request->hasFile('dokumentasi')) {
+            // var_dump($request->all());die;
+            $extension = $request->file('dokumentasi')->extension();
+            $imgname = $request->txtBarang . '_' . date('dmyHi') . '.' . $extension;
+            $this->validate($request, [
+                'tanggal' => 'required|date',
+                'barang' => 'required|string|max:255',
+                'kegiatan' => 'required|string',
+                'jumlah_pekerjaan' => 'required|integer',
+                'alat_digunakan' => 'required|string',
+                'dokumentasi' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf,doc,docx|max:5000',
+            ]);
+
+
+
+            $laporan = LaporanHarian::find($id);
+            $path = Storage::putFileAs('public/images', $request->file('dokumentasi'), $imgname);
+
+            $input = $request->all();
+            $laporan = LaporanHarian::find($id);
+            $laporan->update($input);
+
+            Alert::success('success', ' Berhasil Update Data !');
+            return redirect(route('laporanHarian.index'));
+        } else {
+
+            $this->validate($request, [
+                'tanggal' => 'required|date',
+                'barang' => 'required|string|max:255',
+                'kegiatan' => 'required|string',
+                'jumlah_pekerjaan' => 'required|integer',
+                'alat_digunakan' => 'required|string',
+                'dokumentasi' => 'required|file|mimes:jpeg,png,jpg,gif,svg,pdf,doc,docx|max:5000',
+            ]);
+
+            $input = $request->all();
+            $laporan = LaporanHarian::find($id);
+            $laporan->update($input);
+
+            Alert::success('success', ' Berhasil Update Data !');
+            return redirect(route('laporanHarian.index'));
+        }
     }
 
     /**

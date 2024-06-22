@@ -39,6 +39,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Staff\StaffCutiController;
 use App\Http\Controllers\Staff\StaffDashboardController;
 use App\Http\Controllers\Staff\StaffPengajuanCutiController;
+use App\Http\Controllers\SuratPekerjaanController;
 use App\Http\Controllers\SuratPeringatanController;
 use App\Http\Controllers\TunjanganController;
 use Illuminate\Support\Facades\Auth;
@@ -239,6 +240,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('laporanHarian', LaporanHarianController::class);
     Route::get('/laporanHarian/destroy/{data}', [LaporanHarianController::class, 'destroy'])->name('laporanHarian.destroy');
 
+    //laporan harian
+    Route::resource('suratPekerjaan', SuratPekerjaanController::class);
+    
 });
 
 Auth::routes();
