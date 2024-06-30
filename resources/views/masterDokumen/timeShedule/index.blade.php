@@ -1,20 +1,20 @@
 @extends('layout.base')
 
-@section('title', 'Data Laporan Harian')
+@section('title', 'Data Time Shedule')
 
 @section('content_header')
     <div class="page-header page-header-default">
         <div class="page-header-content">
             <div class="page-title">
-                <h4><i class="icon-cash3"></i> <span class="text-semibold">Data Laporan Harian</span>
-                    - List Data Laporan Harian</h4>
+                <h4><i class="icon-cash3"></i> <span class="text-semibold">Data Time Shedule</span>
+                    - List Data Time Shedule</h4>
             </div>
 
         </div>
 
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
-                <li><i class="active icon-home2 position-left"></i> List Data Laporan Harian</li>
+                <li><i class="active icon-home2 position-left"></i> List Data Time Shedule</li>
                 {{-- <li class="active">Dashboard</li> --}}
             </ul>
         </div>
@@ -25,8 +25,8 @@
     <div class="panel bg-info">
         <div class="panel-heading">
             <em>
-                <h6>Pada halaman ini terdapat list daftar Laporan Harian Laporan Harian yang ada di dalam perusahaan ini. masing-masing
-                    Laporan Harian bisa
+                <h6>Pada halaman ini terdapat list daftar Time Shedule yang ada di dalam perusahaan ini. masing-masing
+                    Time Shedule bisa
                     dihapus dan diedit.
                 </h6>
             </em>
@@ -41,7 +41,7 @@
 
     <div class="panel panel-flat">
         <div class="panel-heading">
-            <a href="{{ route('laporanHarian.create') }}"><i class="icon-file-plus"></i> Tambah Data  Laporan Harian </a>
+            <a href="{{ route('timeShedule.create') }}"><i class="icon-file-plus"></i> Tambah Data  Time Shedule </a>
         </div>
 
         <div class="panel-body ">
@@ -51,13 +51,8 @@
                     <tr>
                         <th>No</th>
                         <th>Tanggal </th>
-                        <th>Barang </th>
-                        <th> Kegiatan</th>
-                        <th> Dokumentasi</th>
-                        <th> Jumlah pekerjaan</th>
-                        <th> Alat digunakan</th>
-                        <th> Status</th>
-                        {{-- <th hidden></th> --}}
+                        <th>Nama </th>
+                        <th> File</th>
                         <th class="text-center">Actions</th>
                     </tr>
                 </thead>
@@ -65,37 +60,21 @@
                     <?php $i = 1; ?>
                     @if ($laporan->count())
                         @foreach ($laporan as $key => $p)
-                            @php
-                                $encyrpt = Crypt::encryptString($p->id);
-                            @endphp
+                        @php
+                        $encyrpt = Crypt::encryptString($p->id);
+                    @endphp
 
                             <tr>
                                 <td>{{ $i++ }}</td>
                                 <td>{{ $p->tanggal }}</td>
                                 <td>
-                                    {{ $p->barang }}
+                                    {{ $p->nama }}
                                 </td>
                                 <td>
-                                    {{ $p->kegiatan }}
+                                    <a target="_blank" href="{{ route('downloadfile',['file'=>$p->file]) }}">{{ $p->file }}</a>
+                                    
                                 </td>
-                                <td>
-                                    <div class="text-center">
-                                        @php $path =Storage::url('images/'.$p->dokumentasi); @endphp
-                                        <img src="{{ url($path) }}"
-                                            onerror="this.onerror=null; this.src='{{ URL::to('/admin/assets/images/brands/user.jpeg') }}'"
-                                            alt="Dokumentasi" width="160">
-                                    </div>
-                                    {{ $p->dokumentasi }}
-                                </td>
-                                <td>
-                                {{ $p->jumlah_pekerjaan }}
-                                </td>
-                                <td>
-                                {{ $p->alat_digunakan }}
-                                </td>
-                                <td>
-                                {{ $p->keterangan }}
-                                </td>
+                                
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
@@ -105,10 +84,10 @@
 
                                             <ul class="dropdown-menu dropdown-menu-right">
                                                 <?php $encyrpt = Crypt::encryptString($p->id); ?>
-                                                <li><a href="{{ route('laporanHarian.destroy', $encyrpt) }}"><i
+                                                <li><a href="{{ route('timeShedule.destroy', $encyrpt) }}"><i
                                                             class=" icon-trash"></i> Hapus</a>
                                                 </li>
-                                                <li><a href="{{ route('laporanHarian.edit', $encyrpt) }}"><i
+                                                <li><a href="{{ route('timeShedule.edit', $encyrpt) }}"><i
                                                             class=" icon-pencil5"></i> Edit</a>
                                                 </li>
                                             </ul>

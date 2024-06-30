@@ -19,8 +19,9 @@ $(function() {
         autoWidth: false,
         columnDefs: [{ 
             orderable: false,
-            width: '100px',
-            targets: [ 5 ]
+            width: '100px'
+            // ,
+            // targets: [ 4 ]
         }],
         dom: '<"datatable-header"flB><"datatable-scroll"t><"datatable-footer"ip>',
         buttons: [

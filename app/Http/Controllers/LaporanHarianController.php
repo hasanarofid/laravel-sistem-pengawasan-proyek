@@ -12,10 +12,16 @@ use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
 class LaporanHarianController extends Controller
 {
-    function __construct()
+    // function __construct()
+    // {
+    //     $this->middleware('permission:dashboard-admin', ['all']);
+    // }
+
+    public function __construct()
     {
-        $this->middleware('permission:dashboard-admin', ['all']);
+        $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -184,7 +190,7 @@ class LaporanHarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($data)
+    public function timeSheduledestroy($data)
     {
         $id = Crypt::decryptString($data);
         LaporanHarian::where('id', $id)->delete();

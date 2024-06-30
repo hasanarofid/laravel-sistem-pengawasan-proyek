@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CutiController;
+use App\Http\Controllers\LaporanUmumController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\JabatanController;
@@ -29,6 +30,7 @@ use App\Http\Controllers\Hrd\HrdDashboardController;
 use App\Http\Controllers\LaporanHarianController;
 use App\Http\Controllers\ManajemenPerusahaanController;
 use App\Http\Controllers\ManajemenRoleMenuController;
+use App\Http\Controllers\MasterDokumenController;
 use App\Http\Controllers\PenilaianKinerjaController;
 use App\Http\Controllers\PotonganController;
 use App\Http\Controllers\ResetPasswordController;
@@ -242,6 +244,28 @@ Route::group(['middleware' => ['auth']], function () {
 
     //laporan harian
     Route::resource('suratPekerjaan', SuratPekerjaanController::class);
+
+    //masterDokumen
+    Route::get('timeShedule', [MasterDokumenController::class, 'timeShedule'])->name('timeShedule');
+    Route::get('timeShedule/create', [MasterDokumenController::class, 'timeSheduleCreate'])->name('timeShedule.create');
+    Route::get('timeShedule/edit/{data}', [MasterDokumenController::class, 'timeSheduleEdit'])->name('timeShedule.edit');
+    Route::post('timeShedule/store', [MasterDokumenController::class, 'timeSheduleStore'])->name('timeShedule.store');
+    Route::put('timeShedule/update', [MasterDokumenController::class, 'timeSheduleUpdate'])->name('timeShedule.update');
+    Route::get('/timeShedule/destroy/{data}', [MasterDokumenController::class, 'timeSheduledestroy'])->name('timeShedule.destroy');
+    // end master dokumen
+
+     //laporan umum
+     Route::get('laporanUmum', [LaporanUmumController::class, 'index'])->name('laporanUmum');
+     Route::get('laporanUmum/create', [LaporanUmumController::class, 'create'])->name('laporanUmum.create');
+     Route::get('laporanUmum/edit/{data}', [LaporanUmumController::class, 'edit'])->name('laporanUmum.edit');
+     Route::post('laporanUmum/store', [LaporanUmumController::class, 'store'])->name('laporanUmum.store');
+     Route::put('laporanUmum/update', [LaporanUmumController::class, 'update'])->name('laporanUmum.update');
+     Route::get('/laporanUmum/destroy/{data}', [LaporanUmumController::class, 'destroy'])->name('laporanUmum.destroy');
+     // end laporan umum
+
+    //download file
+    Route::get('downloadfile/{file}', [MasterDokumenController::class, 'downloadfile'])->name('downloadfile');
+
     
 });
 

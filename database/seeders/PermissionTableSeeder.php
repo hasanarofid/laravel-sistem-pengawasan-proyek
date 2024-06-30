@@ -1,5 +1,4 @@
 <?php
-
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -29,10 +28,11 @@ class PermissionTableSeeder extends Seeder
             'menu-surat-peringatan',
             'menu-export-kinerja',
             'manajemen-perusahaan',
+            'dashboard-pengawas', // Add the new permission here
         ];
 
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission]);
         }
     }
 }
