@@ -30,6 +30,7 @@ use App\Http\Controllers\GajiController;
 use App\Http\Controllers\Hrd\HrdDashboardController;
 use App\Http\Controllers\KerangkaAcuanKerjaController;
 use App\Http\Controllers\LaporanHarianController;
+use App\Http\Controllers\LaporanProgresController;
 use App\Http\Controllers\ManajemenPerusahaanController;
 use App\Http\Controllers\ManajemenRoleMenuController;
 use App\Http\Controllers\MasterDokumenController;
@@ -262,6 +263,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('timeShedule/update', [MasterDokumenController::class, 'timeSheduleUpdate'])->name('timeShedule.update');
     Route::get('/timeShedule/destroy/{data}', [MasterDokumenController::class, 'timeSheduledestroy'])->name('timeShedule.destroy');
     // end master dokumen
+
+    //laporanProgres
+        Route::get('laporanProgres', [LaporanProgresController::class, 'index'])->name('laporanProgres');
+        Route::get('laporanProgres/create', [LaporanProgresController::class, 'create'])->name('laporanProgres.create');
+        Route::get('laporanProgres/edit/{data}', [LaporanProgresController::class, 'edit'])->name('laporanProgres.edit');
+        Route::post('laporanProgres/store', [LaporanProgresController::class, 'store'])->name('laporanProgres.store');
+        Route::put('laporanProgres/update', [LaporanProgresController::class, 'update'])->name('laporanProgres.update');
+        Route::get('/laporanProgres/destroy/{data}', [LaporanProgresController::class, 'destroy'])->name('laporanProgres.destroy');
+    //end laporanProgres
 
      //laporan umum
      Route::get('laporanUmum', [LaporanUmumController::class, 'index'])->name('laporanUmum');
