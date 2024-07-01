@@ -16,7 +16,7 @@
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li> <a href="{{ route('laporanHarian.index') }}"> <i class="active icon-home2 position-left"></i> List Data
+            <li> <a href="{{ route('laporanHarian') }}"> <i class="active icon-home2 position-left"></i> List Data
                     Perencanaan
                 </a>
             </li>

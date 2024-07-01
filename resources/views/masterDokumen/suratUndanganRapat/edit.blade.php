@@ -16,7 +16,7 @@
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li> <a href="{{ route('suratUndanganRapat.index') }}"> <i class="active icon-home2 position-left"></i> List Data
+            <li> <a href="{{ route('suratUndanganRapat') }}"> <i class="active icon-home2 position-left"></i> List Data
                     Surat Undangan Rapat
                 </a>
             </li>

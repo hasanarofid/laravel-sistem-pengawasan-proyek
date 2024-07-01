@@ -16,7 +16,7 @@
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li> <a href="{{ route('suratIjinPekerjaan.index') }}"> <i class="active icon-home2 position-left"></i> List Data
+            <li> <a href="{{ route('suratIjinPekerjaan') }}"> <i class="active icon-home2 position-left"></i> List Data
                     Surat Ijin Pekerjaan
                 </a>
             </li>
