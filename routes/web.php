@@ -23,15 +23,21 @@ use PhpOffice\PhpSpreadsheet\Chart\Layout;
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Dashboard;
+use App\Http\Controllers\DokumenGambarController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\GajiController;
 use App\Http\Controllers\Hrd\HrdDashboardController;
+use App\Http\Controllers\KerangkaAcuanKerjaController;
 use App\Http\Controllers\LaporanHarianController;
 use App\Http\Controllers\ManajemenPerusahaanController;
 use App\Http\Controllers\ManajemenRoleMenuController;
 use App\Http\Controllers\MasterDokumenController;
+use App\Http\Controllers\MemoLapanganController;
+use App\Http\Controllers\PelaksanaController;
+use App\Http\Controllers\PengawasController;
 use App\Http\Controllers\PenilaianKinerjaController;
+use App\Http\Controllers\PerencanaanController;
 use App\Http\Controllers\PotonganController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ProfilController;
@@ -41,8 +47,11 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Staff\StaffCutiController;
 use App\Http\Controllers\Staff\StaffDashboardController;
 use App\Http\Controllers\Staff\StaffPengajuanCutiController;
+use App\Http\Controllers\SuratIjinPekerjaanController;
 use App\Http\Controllers\SuratPekerjaanController;
+use App\Http\Controllers\SuratPemberitahuanController;
 use App\Http\Controllers\SuratPeringatanController;
+use App\Http\Controllers\SuratUndanganRapatController;
 use App\Http\Controllers\TunjanganController;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -262,6 +271,87 @@ Route::group(['middleware' => ['auth']], function () {
      Route::put('laporanUmum/update', [LaporanUmumController::class, 'update'])->name('laporanUmum.update');
      Route::get('/laporanUmum/destroy/{data}', [LaporanUmumController::class, 'destroy'])->name('laporanUmum.destroy');
      // end laporan umum
+
+    //perencanaan
+    Route::get('perencanaan', [PerencanaanController::class, 'index'])->name('perencanaan');
+    Route::get('perencanaan/create', [PerencanaanController::class, 'create'])->name('perencanaan.create');
+    Route::get('perencanaan/edit/{data}', [PerencanaanController::class, 'edit'])->name('perencanaan.edit');
+    Route::post('perencanaan/store', [PerencanaanController::class, 'store'])->name('perencanaan.store');
+    Route::put('perencanaan/update', [PerencanaanController::class, 'update'])->name('perencanaan.update');
+    Route::get('/perencanaan/destroy/{data}', [PerencanaanController::class, 'destroy'])->name('perencanaan.destroy');
+    //end perencanaan
+
+    //pengawas
+    Route::get('pengawas', [PengawasController::class, 'index'])->name('pengawas');
+    Route::get('pengawas/create', [PengawasController::class, 'create'])->name('pengawas.create');
+    Route::get('pengawas/edit/{data}', [PengawasController::class, 'edit'])->name('pengawas.edit');
+    Route::post('pengawas/store', [PengawasController::class, 'store'])->name('pengawas.store');
+    Route::put('pengawas/update', [PengawasController::class, 'update'])->name('pengawas.update');
+    Route::get('/pengawas/destroy/{data}', [PengawasController::class, 'destroy'])->name('pengawas.destroy');
+    //end pengawas
+
+    // pelaksana
+    Route::get('pelaksana', [PelaksanaController::class, 'index'])->name('pelaksana');
+    Route::get('pelaksana/create', [PelaksanaController::class, 'create'])->name('pelaksana.create');
+    Route::get('pelaksana/edit/{data}', [PelaksanaController::class, 'edit'])->name('pelaksana.edit');
+    Route::post('pelaksana/store', [PelaksanaController::class, 'store'])->name('pelaksana.store');
+    Route::put('pelaksana/update', [PelaksanaController::class, 'update'])->name('pelaksana.update');
+    Route::get('/pelaksana/destroy/{data}', [PelaksanaController::class, 'destroy'])->name('pelaksana.destroy');
+    // end pelaksana
+
+    // dokumenGambar
+        Route::get('dokumenGambar', [DokumenGambarController::class, 'index'])->name('dokumenGambar');
+        Route::get('dokumenGambar/create', [DokumenGambarController::class, 'create'])->name('dokumenGambar.create');
+        Route::get('dokumenGambar/edit/{data}', [DokumenGambarController::class, 'edit'])->name('dokumenGambar.edit');
+        Route::post('dokumenGambar/store', [DokumenGambarController::class, 'store'])->name('dokumenGambar.store');
+        Route::put('dokumenGambar/update', [DokumenGambarController::class, 'update'])->name('dokumenGambar.update');
+        Route::get('/dokumenGambar/destroy/{data}', [DokumenGambarController::class, 'destroy'])->name('dokumenGambar.destroy');
+    // end dokumenGambar
+
+    //kerangkaAcuanKerja
+        Route::get('kerangkaAcuanKerja', [KerangkaAcuanKerjaController::class, 'index'])->name('kerangkaAcuanKerja');
+        Route::get('kerangkaAcuanKerja/create', [KerangkaAcuanKerjaController::class, 'create'])->name('kerangkaAcuanKerja.create');
+        Route::get('kerangkaAcuanKerja/edit/{data}', [KerangkaAcuanKerjaController::class, 'edit'])->name('kerangkaAcuanKerja.edit');
+        Route::post('kerangkaAcuanKerja/store', [KerangkaAcuanKerjaController::class, 'store'])->name('kerangkaAcuanKerja.store');
+        Route::put('kerangkaAcuanKerja/update', [KerangkaAcuanKerjaController::class, 'update'])->name('kerangkaAcuanKerja.update');
+        Route::get('/kerangkaAcuanKerja/destroy/{data}', [KerangkaAcuanKerjaController::class, 'destroy'])->name('kerangkaAcuanKerja.destroy');
+    // end kerangkaAcuanKerja
+
+    // suratIjinPekerjaan
+        Route::get('suratIjinPekerjaan', [SuratIjinPekerjaanController::class, 'index'])->name('suratIjinPekerjaan');
+        Route::get('suratIjinPekerjaan/create', [SuratIjinPekerjaanController::class, 'create'])->name('suratIjinPekerjaan.create');
+        Route::get('suratIjinPekerjaan/edit/{data}', [SuratIjinPekerjaanController::class, 'edit'])->name('suratIjinPekerjaan.edit');
+        Route::post('suratIjinPekerjaan/store', [SuratIjinPekerjaanController::class, 'store'])->name('suratIjinPekerjaan.store');
+        Route::put('suratIjinPekerjaan/update', [SuratIjinPekerjaanController::class, 'update'])->name('suratIjinPekerjaan.update');
+        Route::get('/suratIjinPekerjaan/destroy/{data}', [SuratIjinPekerjaanController::class, 'destroy'])->name('suratIjinPekerjaan.destroy');
+    // end suratIjinPekerjaan
+
+    // suratUndanganRapat
+        Route::get('suratUndanganRapat', [SuratUndanganRapatController::class, 'index'])->name('suratUndanganRapat');
+        Route::get('suratUndanganRapat/create', [SuratUndanganRapatController::class, 'create'])->name('suratUndanganRapat.create');
+        Route::get('suratUndanganRapat/edit/{data}', [SuratUndanganRapatController::class, 'edit'])->name('suratUndanganRapat.edit');
+        Route::post('suratUndanganRapat/store', [SuratUndanganRapatController::class, 'store'])->name('suratUndanganRapat.store');
+        Route::put('suratUndanganRapat/update', [SuratUndanganRapatController::class, 'update'])->name('suratUndanganRapat.update');
+        Route::get('/suratUndanganRapat/destroy/{data}', [SuratUndanganRapatController::class, 'destroy'])->name('suratUndanganRapat.destroy');
+    // end suratUndanganRapat
+
+    // suratPemberitahuan
+    Route::get('suratPemberitahuan', [SuratPemberitahuanController::class, 'index'])->name('suratPemberitahuan');
+    Route::get('suratPemberitahuan/create', [SuratPemberitahuanController::class, 'create'])->name('suratPemberitahuan.create');
+    Route::get('suratPemberitahuan/edit/{data}', [SuratPemberitahuanController::class, 'edit'])->name('suratPemberitahuan.edit');
+    Route::post('suratPemberitahuan/store', [SuratPemberitahuanController::class, 'store'])->name('suratPemberitahuan.store');
+    Route::put('suratPemberitahuan/update', [SuratPemberitahuanController::class, 'update'])->name('suratPemberitahuan.update');
+    Route::get('/suratPemberitahuan/destroy/{data}', [SuratPemberitahuanController::class, 'destroy'])->name('suratPemberitahuan.destroy');
+    //end suratPemberitahuan
+
+    // memoLapangan
+    Route::get('memoLapangan', [MemoLapanganController::class, 'index'])->name('memoLapangan');
+    Route::get('memoLapangan/create', [MemoLapanganController::class, 'create'])->name('memoLapangan.create');
+    Route::get('memoLapangan/edit/{data}', [MemoLapanganController::class, 'edit'])->name('memoLapangan.edit');
+    Route::post('memoLapangan/store', [MemoLapanganController::class, 'store'])->name('memoLapangan.store');
+    Route::put('memoLapangan/update', [MemoLapanganController::class, 'update'])->name('memoLapangan.update');
+    Route::get('/memoLapangan/destroy/{data}', [MemoLapanganController::class, 'destroy'])->name('memoLapangan.destroy');
+    //end memoLapangan
 
     //download file
     Route::get('downloadfile/{file}', [MasterDokumenController::class, 'downloadfile'])->name('downloadfile');
