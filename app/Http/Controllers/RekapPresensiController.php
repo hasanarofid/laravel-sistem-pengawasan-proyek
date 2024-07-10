@@ -18,13 +18,20 @@ class RekapPresensiController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:menu-presensi', ['all']);
+        $this->middleware('permission:menu-staff', ['all']);
     }
 
     public function index()
     {
         //
-        $pegawai = Pegawai::paginate(20);
+        if(auth()->user()->role->name == 'ADMIN'){
+            $pegawai = Pegawai::paginate(20);
+        }else{
+            $pegawai = Pegawai::where(
+                'id', auth()->user()->id
+            )->paginate(20);
+        }
+       
         return view('admin.rekapPresensi.index', [
             'pegawai' => $pegawai,
         ]);

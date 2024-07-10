@@ -20,7 +20,7 @@ class PresensiHarianController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:menu-presensi', ['all']);
+        $this->middleware('permission:menu-staff', ['all']);
     }
 
     public function index()
@@ -30,8 +30,16 @@ class PresensiHarianController extends Controller
 
         $dari = date("Y-m-01");
         $ke = \Carbon\Carbon::parse($today)->endOfMonth()->toDateString();;
+        // id_pegawai
+        if(auth()->user()->role->name == 'ADMIN'){
+            $presensi = Presensi_harian::whereBetween('tanggal', [$dari, $ke])->paginate(20);
+        }else{
+            $presensi = Presensi_harian::whereBetween('tanggal', [$dari, $ke])->where(
+                'id_pegawai', auth()->user()->id
+            )->paginate(20);
+        }
 
-        $presensi = Presensi_harian::whereBetween('tanggal', [$dari, $ke])->paginate(20);
+        
         return view('admin.presensi.index', [
             'presensi' => $presensi,
             'dari' => $dari,
@@ -61,7 +69,13 @@ class PresensiHarianController extends Controller
     public function create()
     {
         //
-        $pegawai = Pegawai::pluck('nama', 'id');
+        if(auth()->user()->role->name == 'ADMIN'){
+            $pegawai = Pegawai::pluck('nama', 'id');
+        }else{
+            $pegawai = Pegawai::where('id', auth()->user()->id)->pluck('nama', 'id');
+        }
+        // dd($pegawai);
+      
         return view('admin.presensi.create', [
             'pegawai' => $pegawai
         ]);
