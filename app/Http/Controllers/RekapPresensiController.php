@@ -16,10 +16,10 @@ class RekapPresensiController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    function __construct()
-    {
-        $this->middleware('permission:menu-staff', ['all']);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:menu-staff', ['all']);
+    // }
 
     public function index()
     {

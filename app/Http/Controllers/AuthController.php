@@ -23,11 +23,14 @@ class AuthController extends Controller
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+           
             $user = Auth::user();
             if ($user->role->nm_role == 'superAdmin') {
                 return redirect()->intended('superAdmin');
             } elseif ($user->role->nm_role == 'hrd') {
                 return redirect()->intended('hrd');
+            } elseif ($user->role->nm_role == 'pengawasDashboard') {
+                return redirect()->intended('pengawasDashboard');
             } elseif ($user->role->nm_role == 'staff') {
                 return redirect()->intended('staff');
             }

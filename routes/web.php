@@ -37,6 +37,7 @@ use App\Http\Controllers\MasterDokumenController;
 use App\Http\Controllers\MemoLapanganController;
 use App\Http\Controllers\PelaksanaController;
 use App\Http\Controllers\PengawasController;
+use App\Http\Controllers\PengawasDashboardController;
 use App\Http\Controllers\PenilaianKinerjaController;
 use App\Http\Controllers\PerencanaanController;
 use App\Http\Controllers\PotonganController;
@@ -185,6 +186,8 @@ Route::group(['middleware' => ['auth']], function () {
     //Kebijakan Jam Kerja & Cuti
     Route::resource('peraturan', PeraturanController::class);
 
+    //Menu Pegawas
+    Route::resource('pengawasDashboard', PengawasDashboardController::class);
 
     //Menu Staff
     Route::resource('staff', StaffDashboardController::class);

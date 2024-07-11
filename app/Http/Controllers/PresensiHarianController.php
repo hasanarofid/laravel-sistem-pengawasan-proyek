@@ -18,11 +18,15 @@ class PresensiHarianController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    function __construct()
-    {
-        $this->middleware('permission:menu-staff', ['all']);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:menu-staff', ['all']);
+    // }
 
+    // public function __construct()
+    // {
+    //     $this->middleware(['permission:menu-staff', 'permission:dashboard-pengawas']);
+    // }
     public function index()
     {
         //
