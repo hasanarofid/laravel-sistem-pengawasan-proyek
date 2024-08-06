@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\LaporanHarian;
+use App\Models\Pegawai;
+use App\Models\Perusahaan;
 use Exception;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
@@ -10,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Storage;
 use RealRashid\SweetAlert\Facades\Alert;
+use PDF;
 class LaporanHarianController extends Controller
 {
     // function __construct()
@@ -99,23 +102,7 @@ class LaporanHarianController extends Controller
         return redirect('laporanHarian');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+   
     public function edit($data)
     {
         //
@@ -190,7 +177,7 @@ class LaporanHarianController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function timeSheduledestroy($data)
+    public function destroy($data)
     {
         $id = Crypt::decryptString($data);
         LaporanHarian::where('id', $id)->delete();
@@ -198,5 +185,64 @@ class LaporanHarianController extends Controller
 
         Alert::success('success', ' Berhasil Hapus Data !');
         return redirect(route('laporanHarian.index'));
+    }
+
+    public function show($data)
+    {
+        
+        //
+
+        $id = Crypt::decryptString($data);
+        $suratPeringatan = LaporanHarian::find($id);
+      
+        function numberToRomanRepresentation($number)
+        {
+            $map = array('M' => 1000, 'CM' => 900, 'D' => 500, 'CD' => 400, 'C' => 100, 'XC' => 90, 'L' => 50, 'XL' => 40, 'X' => 10, 'IX' => 9, 'V' => 5, 'IV' => 4, 'I' => 1);
+            $returnValue = '';
+            while ($number > 0) {
+                foreach ($map as $roman => $int) {
+                    if ($number >= $int) {
+                        $number -= $int;
+                        $returnValue .= $roman;
+                        break;
+                    }
+                }
+            }
+            return $returnValue;
+        }
+
+
+        $pegawai = Pegawai::find(Auth::user()->id);
+        $barang = $suratPeringatan->barang;
+        $kegiatan = $suratPeringatan->kegiatan;
+        $jumlah_pekerjaan = $suratPeringatan->jumlah_pekerjaan;
+        $alat_digunakan = $suratPeringatan->alat_digunakan;
+
+
+         $bulan = numberToRomanRepresentation(date('m', strtotime($suratPeringatan->tanggal)));
+        $tahun = date('Y', strtotime($suratPeringatan->tanggal));
+        $lastIncreament = substr($suratPeringatan->id, -3);
+        $id_surat = str_pad($lastIncreament, 3, 0, STR_PAD_LEFT);
+        $perusahaan = Perusahaan::orderBy('id', 'desc')->first();
+
+        $data = [
+            'pegawai' => $pegawai,
+            'barang' => $barang,
+            'kegiatan' => $kegiatan,
+            'jumlah_pekerjaan' => $jumlah_pekerjaan,
+            'alat_digunakan' => $alat_digunakan,
+            'tanggal' => date('Y-m-d', strtotime($suratPeringatan->tanggal)),
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+            'id_surat' => $id_surat,
+            'perusahaan' => $perusahaan,
+
+        ];
+
+   
+            $pdf = PDF::loadView('admin.laporanharian.surat_pdf', $data)->setPaper('a4', 'potrait');;
+   
+
+        return $pdf->stream('pdf_file.pdf', array('Attachment' => 0));
     }
 }

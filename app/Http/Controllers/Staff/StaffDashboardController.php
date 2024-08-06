@@ -15,10 +15,10 @@ use PhpParser\Node\Stmt\Foreach_;
 
 class StaffDashboardController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('permission:menu-staff', ['all']);
-    }
+    // function __construct()
+    // {
+    //     $this->middleware('permission:menu-staff', ['all']);
+    // }
 
     /**
      * Display a listing of the resource.

@@ -16,6 +16,7 @@ class AuthController extends Controller
     }
     public function proses_login(Request $request)
     {
+        dd('staff');
         request()->validate([
             'email' => 'required',
             'password' => 'required',
@@ -25,6 +26,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
            
             $user = Auth::user();
+         
             if ($user->role->nm_role == 'superAdmin') {
                 return redirect()->intended('superAdmin');
             } elseif ($user->role->nm_role == 'hrd') {
@@ -32,6 +34,7 @@ class AuthController extends Controller
             } elseif ($user->role->nm_role == 'pengawasDashboard') {
                 return redirect()->intended('pengawasDashboard');
             } elseif ($user->role->nm_role == 'staff') {
+               
                 return redirect()->intended('staff');
             }
         } else {

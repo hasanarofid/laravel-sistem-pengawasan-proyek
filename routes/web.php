@@ -3,6 +3,7 @@
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\CutiController;
 use App\Http\Controllers\LaporanUmumController;
+use App\Http\Controllers\RekapLaporanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\JabatanController;
@@ -369,6 +370,13 @@ Route::group(['middleware' => ['auth']], function () {
     //download file
     Route::get('downloadfile/{file}', [MasterDokumenController::class, 'downloadfile'])->name('downloadfile');
 
+    //rekapLaporan
+    Route::get('rekapLaporan', [RekapLaporanController::class, 'index'])->name('rekapLaporan');
+    Route::get('rekapLaporan/create', [RekapLaporanController::class, 'create'])->name('rekapLaporan.create');
+    Route::get('rekapLaporan/edit/{data}', [RekapLaporanController::class, 'edit'])->name('rekapLaporan.edit');
+    Route::post('rekapLaporan/store', [RekapLaporanController::class, 'store'])->name('rekapLaporan.store');
+    Route::put('rekapLaporan/update', [RekapLaporanController::class, 'update'])->name('rekapLaporan.update');
+    Route::get('/rekapLaporan/destroy/{data}', [RekapLaporanController::class, 'destroy'])->name('rekapLaporan.destroy');
     
 });
 

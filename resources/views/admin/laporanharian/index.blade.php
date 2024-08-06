@@ -111,6 +111,10 @@
                                                 <li><a href="{{ route('laporanHarian.edit', $encyrpt) }}"><i
                                                             class=" icon-pencil5"></i> Edit</a>
                                                 </li>
+                                                <li><a href="{{ route('laporanHarian.show', $encyrpt) }}"
+                                                    target="_blank"><i class=" icon-folder-open3"></i> Buka File
+                                                    Surat</a>
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
