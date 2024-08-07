@@ -3,7 +3,7 @@
 
 <ul class="navigation navigation-main navigation-accordion">
     <li class="navigation-header"><span>Main Menu</span> <i class="icon-menu"></i></li>
-
+    
     @foreach (App\Models\Menu::orderBy('order', 'asc')->get() as $menuItem)
 
         @if ($menuItem->id_parent == null)
